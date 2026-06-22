@@ -1,7 +1,3 @@
--- Dormitory Management System Database
+-- Dormitory Management System Databasew--
 
---testing
-
--- hi
-
---hi
+--wassup
