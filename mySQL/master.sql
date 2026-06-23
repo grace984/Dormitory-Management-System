@@ -1,9 +1,10 @@
---this is for submission, 
---compilation of all files
--- do not touch me until submission
--- sorry for touching - cyp
+
+-- compilation of all files
+
+DROP DATABASE IF EXISTS dormitory_management;
 CREATE DATABASE dormitory_management;
 USE dormitory_management;
+
 CREATE TABLE Tenant (
     tenant_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -13,7 +14,6 @@ CREATE TABLE Tenant (
     email VARCHAR(100) UNIQUE NOT NULL,
     status VARCHAR(20) DEFAULT 'Active'
 );
-
 
 CREATE TABLE Room (
     room_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,3 +43,4 @@ CREATE TABLE Room_Assignment (
     FOREIGN KEY (room_id) REFERENCES Room(room_id),
     FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
 );
+
