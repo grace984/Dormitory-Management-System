@@ -1,9 +1,13 @@
 
 -- compilation of all files
 
+-- SECTION 1: DATABASE
+
 DROP DATABASE IF EXISTS dormitory_management;
 CREATE DATABASE dormitory_management;
 USE dormitory_management;
+
+-- SECTION 2: TABLES
 
 CREATE TABLE Tenant (
     tenant_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -44,3 +48,14 @@ CREATE TABLE Room_Assignment (
     FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
 );
 
+-- SECTION 3: INSERT
+
+-- SECTION 4: UPDATE / DELETE
+
+-- SECTION 5: SELECT / JOIN / AGGREGATE
+
+-- SECTION 6: VIEW
+
+-- SECTION 7: STORED PROCEDURE
+
+-- SECTION 8: TRIGGER
