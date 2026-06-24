@@ -50,6 +50,38 @@ CREATE TABLE Room_Assignment (
 
 -- SECTION 3: INSERT
 
+INSERT INTO Tenant (first_name, last_name, gender, contact_number, email, status)
+VALUES
+('Juan', 'Dela Cruz', 'Male', '09171234567', 'juan@gmail.com', 'Active'),
+('Maria', 'Santos', 'Female', '09181234567', 'maria@gmail.com', 'Active'),
+('Jose', 'Reyes', 'Male', '09192345678', 'jose@gmail.com', 'Active'),
+('Ana', 'Cruz', 'Female', '09201234567', 'ana@gmail.com', 'Inactive'),
+('Paolo', 'Garcia', 'Male', '09211234567', 'paolo@gmail.com', 'Active');
+
+INSERT INTO Room (room_number, capacity, room_type, status)
+VALUES
+('R101', 4, 'Shared', 'Available'),
+('R102', 2, 'Shared', 'Occupied'),
+('R201', 1, 'Solo', 'Available'),
+('R202', 4, 'Shared', 'Occupied');
+
+INSERT INTO Admin (admin_name, role, contact_number)
+VALUES
+('Maria Santos', 'Manager', '09181234567'),
+('Carlo Reyes', 'Staff', '09192345678');
+
+INSERT INTO Room_Assignment (tenant_id, room_id, admin_id, assigned_date, check_out_date)
+VALUES
+(1, 1, 1, '2026-06-20', NULL),
+(2, 2, 1, '2026-06-18', NULL),
+(3, 2, 2, '2026-06-17', NULL),
+(4, 3, 1, '2026-06-10', '2026-06-25'),
+(5, 4, 2, '2026-06-15', NULL);
+
+
+
+
+
 -- SECTION 4: UPDATE / DELETE
 
 -- SECTION 5: SELECT / JOIN / AGGREGATE
