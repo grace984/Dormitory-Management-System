@@ -78,11 +78,15 @@ VALUES
 (4, 3, 1, '2026-06-10', '2026-06-25'),
 (5, 4, 2, '2026-06-15', NULL);
 
-
-
-
-
 -- SECTION 4: UPDATE / DELETE
+
+UPDATE Tenant
+SET status = 'Inactive'
+WHERE tenant_id = 3;
+
+DELETE FROM Room_Assignment
+WHERE assignment_id = 4;
+
 
 -- SECTION 5: SELECT / JOIN / AGGREGATE
 
