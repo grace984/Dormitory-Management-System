@@ -90,6 +90,55 @@ WHERE assignment_id = 4;
 
 -- SECTION 5: SELECT / JOIN / AGGREGATE
 
+SELECT * FROM Tenant;
+SELECT * FROM Room;
+
+SELECT * 
+FROM Tenant
+WHERE status = 'Active';
+
+SELECT *
+FROM Room
+WHERE status = 'Available';
+
+SELECT 
+    t.first_name,
+    t.last_name,
+    r.room_number
+FROM Room_Assignment ra
+JOIN Tenant t ON ra.tenant_id = t.tenant_id
+JOIN Room r ON ra.room_id = r.room_id;
+
+SELECT 
+    t.first_name,
+    t.last_name,
+    r.room_number,
+    a.admin_name,
+    ra.assigned_date,
+    ra.check_out_date
+FROM Room_Assignment ra
+JOIN Tenant t ON ra.tenant_id = t.tenant_id
+JOIN Room r ON ra.room_id = r.room_id
+JOIN Admin a ON ra.admin_id = a.admin_id;
+
+SELECT COUNT(*) AS total_tenants
+FROM Tenant;
+
+SELECT COUNT(*) AS total_rooms
+FROM Room;
+
+SELECT 
+    r.room_number,
+    COUNT(*) AS tenant_count
+FROM Room_Assignment ra
+JOIN Room r ON ra.room_id = r.room_id
+GROUP BY r.room_number;
+
+
+
+
+
+
 -- SECTION 6: VIEW
 
 -- SECTION 7: STORED PROCEDURE
