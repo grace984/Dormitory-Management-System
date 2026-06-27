@@ -135,12 +135,62 @@ JOIN Room r ON ra.room_id = r.room_id
 GROUP BY r.room_number;
 
 
-
-
-
-
 -- SECTION 6: VIEW
+CREATE VIEW tenant_room_summary AS
+SELECT 
+    t.tenant_id,
+    t.first_name,
+    t.last_name,
+    r.room_number,
+    a.admin_name,
+    ra.assigned_date,
+    ra.check_out_date
+FROM Room_Assignment ra
+JOIN Tenant t ON ra.tenant_id = t.tenant_id
+JOIN Room r ON ra.room_id = r.room_id
+JOIN Admin a ON ra.admin_id = a.admin_id;
+
 
 -- SECTION 7: STORED PROCEDURE
+DELIMITER //
+
+CREATE PROCEDURE AddTenant(
+    IN p_first_name VARCHAR(50),
+    IN p_last_name VARCHAR(50),
+    IN p_gender VARCHAR(10),
+    IN p_contact_number VARCHAR(20),
+    IN p_email VARCHAR(100)
+)
+BEGIN
+    INSERT INTO Tenant (
+        first_name,
+        last_name,
+        gender,
+        contact_number,
+        email
+    )
+    VALUES (
+        p_first_name,
+        p_last_name,
+        p_gender,
+        p_contact_number,
+        p_email
+    );
+END //
+
+DELIMITER ;
+
 
 -- SECTION 8: TRIGGER
+DELIMITER //
+
+CREATE TRIGGER update_room_status
+AFTER INSERT ON Room_Assignment
+FOR EACH ROW
+BEGIN
+    UPDATE Room
+    SET status = 'Occupied'
+    WHERE room_id = NEW.room_id;
+END //
+
+DELIMITER ;
