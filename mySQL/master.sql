@@ -136,7 +136,7 @@ GROUP BY r.room_number;
 
 
 -- SECTION 6: VIEW
-CREATE VIEW tenant_room_summary AS
+CREATE OR REPLACE VIEW tenant_room_summary AS
 SELECT 
     t.tenant_id,
     t.first_name,
@@ -152,6 +152,8 @@ JOIN Admin a ON ra.admin_id = a.admin_id;
 
 
 -- SECTION 7: STORED PROCEDURE
+
+DROP PROCEDURE IF EXISTS AddTenant;
 DELIMITER //
 
 CREATE PROCEDURE AddTenant(
@@ -182,6 +184,8 @@ DELIMITER ;
 
 
 -- SECTION 8: TRIGGER
+
+DROP TRIGGER IF EXISTS update_room_status;
 DELIMITER //
 
 CREATE TRIGGER update_room_status
@@ -194,3 +198,5 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
