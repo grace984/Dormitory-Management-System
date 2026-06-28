@@ -1,5 +1,5 @@
 
--- compilation of all files
+-- GROUP 4 FINAL PROJ
 
 -- SECTION 1: DATABASE
 
